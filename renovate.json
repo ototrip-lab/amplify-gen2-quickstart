@@ -1,0 +1,13 @@
+{
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "updateTypes": ["patch", "minor"],
+      "groupSlug": "all-minor-patch"
+    }
+  ],
+  "labels": ["dependencies"],
+  "timezone": "Asia/Tokyo",
+  "schedule": "every weekend"
+}
