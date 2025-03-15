@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 
 function App({ signOut }: { signOut: any }) {
   return (
