@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import {
   withAuthenticator,
   WithAuthenticatorProps,
-} from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+} from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 
 function App({ signOut }: WithAuthenticatorProps) {
   return (
