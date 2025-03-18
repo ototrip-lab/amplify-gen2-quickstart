@@ -1,18 +1,35 @@
-"use client";
+'use client';
 
-import {
-  withAuthenticator,
-  WithAuthenticatorProps,
-} from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
+import { Flex, useTheme } from '@aws-amplify/ui-react';
+import { AIConversation } from '@aws-amplify/ui-react-ai';
+import '@aws-amplify/ui-react/styles.css';
+import Markdown from 'react-markdown';
 
-function App({ signOut }: WithAuthenticatorProps) {
+import { useAIConversation } from './client';
+
+const App = () => {
+  const { tokens } = useTheme();
+
+  const [
+    {
+      data: { messages },
+      isLoading,
+    },
+    handleSendMessage,
+  ] = useAIConversation('chat');
+
   return (
-    <>
-      <h1>Hello, Amplify 👋</h1>
-      <button onClick={signOut}>Sign out</button>
-    </>
+    <Flex padding={tokens.space.large} justifyContent='center'>
+      <AIConversation
+        messages={messages}
+        isLoading={isLoading}
+        handleSendMessage={handleSendMessage}
+        messageRenderer={{
+          text: ({ text }) => <Markdown>{text}</Markdown>,
+        }}
+      />
+    </Flex>
   );
-}
+};
 
-export default withAuthenticator(App);
+export default App;
