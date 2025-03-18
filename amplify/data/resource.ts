@@ -8,10 +8,12 @@ const schema = a.schema({
     .authorization((allow) => [allow.owner()]),
 
   // Define AI Kit
-  chat: a.conversation({
-    aiModel: a.ai.model('Claude 3.5 Sonnet'),
-    systemPrompt: 'You are a helpful AI assistant.',
-  }),
+  chat: a
+    .conversation({
+      aiModel: a.ai.model('Claude 3.5 Sonnet'),
+      systemPrompt: 'You are a helpful AI assistant.',
+    })
+    .authorization((allow) => allow.owner()),
 });
 
 export type Schema = ClientSchema<typeof schema>;
