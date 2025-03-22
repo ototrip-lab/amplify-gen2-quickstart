@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { Flex, useTheme } from '@aws-amplify/ui-react';
-import { AIConversation } from '@aws-amplify/ui-react-ai';
-import '@aws-amplify/ui-react/styles.css';
-import Markdown from 'react-markdown';
+import { Flex, useTheme } from "@aws-amplify/ui-react";
+import { AIConversation } from "@aws-amplify/ui-react-ai";
+import "@aws-amplify/ui-react/styles.css";
+import Markdown from "react-markdown";
 
-import { useAIConversation } from './client';
+import { useAIConversation } from "./client";
 
 const App = () => {
   const { tokens } = useTheme();
@@ -16,10 +16,10 @@ const App = () => {
       isLoading,
     },
     handleSendMessage,
-  ] = useAIConversation('chat');
+  ] = useAIConversation("chat");
 
   return (
-    <Flex padding={tokens.space.large} justifyContent='center'>
+    <Flex padding={tokens.space.large} justifyContent="center">
       <AIConversation
         messages={messages}
         isLoading={isLoading}
