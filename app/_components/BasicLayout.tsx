@@ -28,7 +28,7 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
   return (
     <Grid
       templateColumns="20rem 1fr"
-      templateRows="1fr 4rem"
+      templateRows="1fr"
       height="100vh"
       overflow="hidden"
     >
@@ -37,8 +37,6 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
           gap={tokens.space.large}
           direction="column"
           rowGap={tokens.space.medium}
-          height="100hv"
-          overflow="hidden"
           paddingTop={tokens.space.xxxl}
           paddingBottom={tokens.space.xxxl}
         >
@@ -91,18 +89,6 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
             <Authenticator />
           </Flex>
         )}
-      </View>
-
-      <View
-        columnStart={2}
-        columnEnd={3}
-        textAlign="end"
-        padding={tokens.space.large}
-        backgroundColor={tokens.colors.background.secondary}
-      >
-        <Text color={tokens.colors.primary[100]}>
-          Created With Amplify AI Kit
-        </Text>
       </View>
     </Grid>
   );
