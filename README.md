@@ -57,19 +57,7 @@ npm run dev
 
 To deploy to AWS using Amplify Gen2:
 
-1. Deploy the backend:
-
-```bash
-npx ampx deploy
-```
-
-2. Build the frontend:
-
-```bash
-npm run build
-```
-
-3. You can deploy using Amplify Hosting or deploy your Next.js application to any hosting service of your choice.
+https://docs.aws.amazon.com/amplify/latest/userguide/getting-started-next.html
 
 ## Learning Resources
 
