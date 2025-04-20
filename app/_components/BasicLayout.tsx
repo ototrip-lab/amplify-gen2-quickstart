@@ -42,7 +42,14 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
         >
           <Button
             variation="primary"
-            onClick={() => router.push("/chat")}
+            onClick={() => {
+              const pathname = window.location.pathname;
+              if (pathname === "/chat") {
+                window.location.reload();
+              } else {
+                router.push("/chat");
+              }
+            }}
             isDisabled={authStatus !== "authenticated"}
           >
             New Chat
