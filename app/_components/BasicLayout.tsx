@@ -31,7 +31,7 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
 
   return (
     <Grid
-      templateColumns="20rem 1fr"
+      templateColumns="15rem 1fr"
       templateRows="1fr"
       height="100vh"
       overflow="hidden"
