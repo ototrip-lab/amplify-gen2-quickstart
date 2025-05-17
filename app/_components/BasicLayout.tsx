@@ -13,7 +13,11 @@ import {
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { useRouter } from "next/navigation";
-import { AiOutlineHistory, AiOutlineHome } from "react-icons/ai";
+import {
+  AiOutlineHistory,
+  AiOutlineHome,
+  AiOutlineInbox,
+} from "react-icons/ai";
 
 type Props = {
   headerTitle?: string;
@@ -66,6 +70,13 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
             <AiOutlineHistory />
             <Button variation="link" onClick={() => router.push("/history")}>
               History
+            </Button>
+          </Flex>
+
+          <Flex gap={tokens.space.medium} alignItems="center">
+            <AiOutlineInbox />
+            <Button variation="link" onClick={() => router.push("/storage")}>
+              Storage
             </Button>
           </Flex>
         </Flex>
