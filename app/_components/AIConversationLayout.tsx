@@ -25,6 +25,7 @@ export const AIConversationLayout = ({ id }: { id?: string }) => {
         messageRenderer={{
           text: ({ text }) => <Markdown>{text}</Markdown>,
         }}
+        allowAttachments
       />
     </View>
   );
