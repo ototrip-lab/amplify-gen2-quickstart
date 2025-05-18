@@ -12,6 +12,7 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import {
   AiOutlineHistory,
@@ -23,6 +24,8 @@ type Props = {
   headerTitle?: string;
   children: React.ReactNode;
 };
+
+export const queryClient = new QueryClient();
 
 const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
@@ -115,7 +118,9 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
 export const BasicLayout = (props: Props) => {
   return (
     <Authenticator.Provider>
-      <Layout {...props} />
+      <QueryClientProvider client={queryClient}>
+        <Layout {...props} />
+      </QueryClientProvider>
     </Authenticator.Provider>
   );
 };
