@@ -2,13 +2,12 @@
 
 import { fetchAuthSession } from "@aws-amplify/auth";
 import { Button, Flex, Text } from "@aws-amplify/ui-react";
-import { StorageManager } from "@aws-amplify/ui-react-storage";
 import {
   createAmplifyAuthAdapter,
   createStorageBrowser,
 } from "@aws-amplify/ui-react-storage/browser";
 import "@aws-amplify/ui-react/styles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "@/app/_components/ConfigureAmplify";
 
@@ -48,13 +47,44 @@ const CustomLocationsView = ({ identityID }: { identityID: string }) => {
   );
 };
 
+function MyLocationActionView() {
+  const state = useView("LocationDetail");
+  switch (state.actionType) {
+    case "copy":
+      return <StorageBrowser.CopyView />;
+    case "createFolder":
+      return <StorageBrowser.CreateFolderView />;
+    case "delete":
+      return <StorageBrowser.DeleteView />;
+    case "upload":
+    default:
+      return <StorageBrowser.UploadView />;
+  }
+}
+
 const MyStorageBrowser = ({ identityID }: { identityID: string }) => {
   const state = useView("LocationDetail");
+  const ref = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (state.actionType) {
+      ref.current?.showModal();
+    } else {
+      ref.current?.close();
+    }
+  }, [state.actionType]);
 
   if (!state.location.current) {
     return <CustomLocationsView identityID={identityID} />;
   }
-  return <StorageBrowser.LocationDetailView />;
+  return (
+    <>
+      <StorageBrowser.LocationDetailView />
+      <dialog ref={ref}>
+        <MyLocationActionView />
+      </dialog>
+    </>
+  );
 };
 
 const App = () => {
@@ -70,12 +100,8 @@ const App = () => {
 
   return (
     <Flex direction="column" rowGap="l" margin="large">
-      <StorageManager accessLevel="private" maxFileCount={1} />
       <StorageBrowser.Provider
         displayText={{
-          LocationsView: {
-            title: "Knowledge",
-          },
           LocationDetailView: {
             getTitle: (location) => location.key.replace(`${identityID}/`, ""),
           },
