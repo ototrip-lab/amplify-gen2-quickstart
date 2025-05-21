@@ -15,9 +15,10 @@ import "@aws-amplify/ui-react/styles.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import {
+  AiOutlineDatabase,
+  AiOutlineFolderOpen,
   AiOutlineHistory,
   AiOutlineHome,
-  AiOutlineInbox,
 } from "react-icons/ai";
 
 type Props = {
@@ -77,9 +78,16 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
           </Flex>
 
           <Flex gap={tokens.space.medium} alignItems="center">
-            <AiOutlineInbox />
+            <AiOutlineFolderOpen />
             <Button variation="link" onClick={() => router.push("/storage")}>
               Storage
+            </Button>
+          </Flex>
+
+          <Flex gap={tokens.space.medium} alignItems="center">
+            <AiOutlineDatabase />
+            <Button variation="link" onClick={() => router.push("/knowledge")}>
+              Knowledge
             </Button>
           </Flex>
         </Flex>
