@@ -1,5 +1,7 @@
 # Amplify Gen2 Next.js Quickstart
 
+![Home Screen](docs/image/Home.png)
+
 This project is a quickstart template combining [AWS Amplify Gen2](https://docs.amplify.aws/gen2/) with [Next.js](https://nextjs.org/). It leverages Amplify Gen2's TypeScript-based infrastructure definitions and Next.js frontend framework to quickly build full-stack applications.
 
 ## Features
@@ -8,10 +10,14 @@ This quickstart includes the following features:
 
 - **Authentication** - User authentication using Amplify Auth
 - **Data Modeling** - Data modeling and API using Amplify Data
+- **Chat** - AI assistant interaction with conversation history
+- **History** - View and manage past chat conversations
+- **Storage** - Cloud storage for file upload and management
+- **Wiki** - Create and edit documents in Markdown format
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
+- [Node.js](https://nodejs.org/) (v20 or higher)
 - [AWS Account](https://aws.amazon.com/)
 - [AWS CLI](https://aws.amazon.com/cli/) (configured)
 
@@ -43,12 +49,19 @@ npm run dev
 /
 ├── app/                  # Next.js application code
 │   ├── _components/      # Shared components
+│   ├── chat/             # Chat feature
+│   ├── history/          # Chat history feature
+│   ├── storage/          # Storage feature
+│   ├── wiki/             # Wiki feature
 │   ├── layout.tsx        # Root layout
 │   └── page.tsx          # Main page
 ├── amplify/              # Amplify Gen2 backend definitions
 │   ├── auth/             # Authentication resources
 │   ├── data/             # Data model resources
+│   ├── storage/          # Storage resources
 │   └── backend.ts        # Backend definition
+├── docs/                 # Documentation
+│   └── image/            # Documentation images
 ├── public/               # Static assets
 └── ...
 ```
