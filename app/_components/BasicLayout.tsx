@@ -86,8 +86,8 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
 
           <Flex gap={tokens.space.medium} alignItems="center">
             <AiOutlineDatabase />
-            <Button variation="link" onClick={() => router.push("/knowledge")}>
-              Knowledge
+            <Button variation="link" onClick={() => router.push("/wiki")}>
+              Wiki
             </Button>
           </Flex>
         </Flex>
