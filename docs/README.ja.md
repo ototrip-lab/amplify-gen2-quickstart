@@ -66,24 +66,6 @@ npm run dev
 └── ...
 ```
 
-## デプロイ
-
-Amplify Gen2を使用してAWSにデプロイするには：
-
-1. バックエンドをデプロイします：
-
-```bash
-npx ampx deploy
-```
-
-2. フロントエンドをビルドします：
-
-```bash
-npm run build
-```
-
-3. Amplify Hostingを使用してデプロイするか、Next.jsアプリケーションを任意のホスティングサービスにデプロイできます。
-
 ## 学習リソース
 
 - [Amplify Gen2 ドキュメント](https://docs.amplify.aws/gen2/)
