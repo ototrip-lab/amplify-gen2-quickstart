@@ -33,16 +33,15 @@ const TableComponent = () => {
 
       <TableBody>
         {data?.map((item) => (
-          <TableRow key={item.id}>
+          <TableRow
+            key={item.id}
+            onClick={() => {
+              router.push(`/chat/${item.id}`);
+            }}
+            style={{ cursor: "pointer" }}
+          >
             <TableCell>
-              <Button
-                variation="link"
-                onClick={() => {
-                  router.push(`/chat/${item.id}`);
-                }}
-              >
-                <Text fontSize="12px">{item.message}</Text>
-              </Button>
+              <Text fontSize="12px">{item.message}</Text>
             </TableCell>
             <TableCell>
               <Text fontSize="12px">{item.createdAt}</Text>

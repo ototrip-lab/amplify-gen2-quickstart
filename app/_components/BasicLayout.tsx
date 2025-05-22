@@ -5,8 +5,8 @@ import {
   Button,
   Flex,
   Grid,
+  Heading,
   ScrollView,
-  Text,
   useAuthenticator,
   useTheme,
   View,
@@ -28,7 +28,10 @@ type Props = {
 
 export const queryClient = new QueryClient();
 
-const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
+const Layout = ({
+  children,
+  headerTitle = "Welcome to Amplify AI Kit",
+}: Props) => {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
   const { tokens } = useTheme();
   const router = useRouter();
@@ -98,14 +101,9 @@ const Layout = ({ children, headerTitle = "Amplify AI Kit" }: Props) => {
         overflow="auto"
       >
         <View textAlign="center" padding={tokens.space.large}>
-          <Text
-            color={tokens.colors.primary[100]}
-            as="h1"
-            fontSize={tokens.fontSizes.xxxl}
-            fontWeight={tokens.fontWeights.bold}
-          >
-            {headerTitle}
-          </Text>
+          <View textAlign="center">
+            <Heading level={2}>{headerTitle}</Heading>
+          </View>
         </View>
         {authStatus === "authenticated" ? (
           <ScrollView width="100%">{children}</ScrollView>
