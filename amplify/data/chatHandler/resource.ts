@@ -1,6 +1,6 @@
 import { defineConversationHandlerFunction } from '@aws-amplify/backend-ai/conversation';
 
-import { BEDROCK_MODEL_PATH } from '../constants';
+import { CROSS_REGION_BEDROCK_MODEL_PATH } from '../constants';
 
 export const chatHandler = defineConversationHandlerFunction({
   entry: './index.ts',
@@ -8,7 +8,7 @@ export const chatHandler = defineConversationHandlerFunction({
   models: [
     {
       modelId: {
-        resourcePath: BEDROCK_MODEL_PATH,
+        resourcePath: CROSS_REGION_BEDROCK_MODEL_PATH,
       },
     },
   ],

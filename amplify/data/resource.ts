@@ -1,7 +1,7 @@
 import { a, defineData, type ClientSchema } from "@aws-amplify/backend";
 
 import { chatHandler } from "./chatHandler/resource";
-import { BEDROCK_MODEL_PATH } from "./constants";
+import { CROSS_REGION_BEDROCK_MODEL_PATH } from "./constants";
 
 const schema = a.schema({
   User: a
@@ -23,7 +23,7 @@ const schema = a.schema({
   chat: a
     .conversation({
       aiModel: {
-        resourcePath: BEDROCK_MODEL_PATH,
+        resourcePath: CROSS_REGION_BEDROCK_MODEL_PATH,
       },
       systemPrompt: "You are a helpful AI assistant.",
       handler: chatHandler,
