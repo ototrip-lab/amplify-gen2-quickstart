@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Card,
-  Flex,
-  Grid,
-  Heading,
-  Text,
-  useTheme,
-  View,
-} from "@aws-amplify/ui-react";
+import { Flex, Grid, useTheme } from "@aws-amplify/ui-react";
 import { useRouter } from "next/navigation";
 import {
   AiOutlineDatabase,
@@ -17,39 +9,7 @@ import {
   AiOutlineWechat,
 } from "react-icons/ai";
 
-const FeatureCard = ({
-  title,
-  description,
-  icon,
-  onClick,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  onClick: () => void;
-}) => {
-  const { tokens } = useTheme();
-
-  return (
-    <Card
-      variation="elevated"
-      padding={tokens.space.large}
-      borderRadius={tokens.radii.medium}
-      onClick={onClick}
-      style={{ cursor: "pointer", height: "100%" }}
-    >
-      <Flex direction="column" gap={tokens.space.medium}>
-        <Flex alignItems="center" gap={tokens.space.small}>
-          <View fontSize="2rem" color={tokens.colors.primary[80]}>
-            {icon}
-          </View>
-          <Heading level={3}>{title}</Heading>
-        </Flex>
-        <Text>{description}</Text>
-      </Flex>
-    </Card>
-  );
-};
+import { FeatureCard } from "@/app/_components/FeatureCard";
 
 const HomePage = () => {
   const { tokens } = useTheme();

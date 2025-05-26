@@ -5,19 +5,19 @@ import { useState } from "react";
 
 import { type Schema } from "@/amplify/data/resource";
 import { queryClient } from "@/app/_components/BasicLayout";
-import { getDisplayName, getItemLevel, getPath } from "./misc";
+
+import type { WikiItem } from "./types";
+import {
+  getDisplayName,
+  getItemLevel,
+  getPath,
+  isDescendantOf,
+  organizeItemsIntoTree,
+} from "./utils";
 
 const client = generateClient<Schema>();
 
-export type WikiItem = {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-const fetchWikiItems = async (username: string): Promise<WikiItem[]> => {
+const fetchWikiItems = async (username: string) => {
   try {
     const { data: items } = await client.models.UserWiki.list({
       filter: { username: { eq: username } },
@@ -84,9 +84,7 @@ const updateWikiItem = async (item: {
 
 const deleteWikiItem = async (id: string) => {
   try {
-    const result = await client.models.UserWiki.delete({
-      id,
-    });
+    const result = await client.models.UserWiki.delete({ id });
     if (result && result.data) {
       return result.data;
     }
@@ -97,7 +95,7 @@ const deleteWikiItem = async (id: string) => {
   }
 };
 
-export const useData = () => {
+export const useWikiData = () => {
   const { user } = useAuthenticator((context) => [context.user]);
   const username = user?.username || "";
 
@@ -107,27 +105,6 @@ export const useData = () => {
   });
 
   const [selectedItem, setSelectedItem] = useState<WikiItem | null>(null);
-
-  const isDescendantOf = (childTitle: string, parentTitle: string): boolean => {
-    const childPath = getPath(childTitle);
-    const parentPath = getPath(parentTitle);
-
-    if (parentPath === "/") return childPath !== "/";
-    return childPath.startsWith(parentPath + "/") || childPath === parentPath;
-  };
-
-  const organizeItemsIntoTree = () => {
-    return [...items].sort((a, b) => {
-      const pathA = getPath(a.title);
-      const pathB = getPath(b.title);
-
-      if (pathA !== pathB) {
-        return pathA.localeCompare(pathB);
-      }
-
-      return getDisplayName(a.title).localeCompare(getDisplayName(b.title));
-    });
-  };
 
   const createItem = async (parentPath: string = "/") => {
     const newTitle =
@@ -217,7 +194,7 @@ export const useData = () => {
   });
 
   return {
-    items: organizeItemsIntoTree(),
+    items: organizeItemsIntoTree(items),
     selectedItem,
     setSelectedItem,
     createItem: createMutation.mutate,

@@ -6,7 +6,7 @@ import { queryClient } from "@/app/_components/BasicLayout";
 
 const client = generateClient<Schema>();
 
-type Data = {
+type ChatHistoryItem = {
   id: string;
   message: string;
   createdAt: string;
@@ -15,7 +15,7 @@ type Data = {
 const fetchHistory = async () => {
   const { data: conversations } = await client.conversations.chat.list();
 
-  const tmpList: Data[] = await Promise.all(
+  const tmpList: ChatHistoryItem[] = await Promise.all(
     conversations.map(async (conversation) => {
       const detail = await conversation.listMessages();
       const message = detail.data[0]?.content[0].text || "";
@@ -43,7 +43,7 @@ const deleteHistory = async (id: string) => {
   return result;
 };
 
-export const useData = () => {
+export const useHistoryData = () => {
   const { data } = useSuspenseQuery({
     queryKey: ["history"],
     queryFn: fetchHistory,
