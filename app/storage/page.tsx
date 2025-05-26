@@ -1,7 +1,14 @@
 "use client";
 
 import { fetchAuthSession } from "@aws-amplify/auth";
-import { Button, Flex, Text } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Text,
+  useTheme,
+} from "@aws-amplify/ui-react";
 import {
   createAmplifyAuthAdapter,
   createStorageBrowser,
@@ -88,6 +95,7 @@ const MyStorageBrowser = ({ identityID }: { identityID: string }) => {
 };
 
 const App = () => {
+  const { tokens } = useTheme();
   const [identityID, setIdentityID] = useState<string>("");
 
   useEffect(() => {
@@ -99,7 +107,16 @@ const App = () => {
   }, []);
 
   return (
-    <Flex direction="column" rowGap="l" margin="large">
+    <Flex
+      direction="column"
+      gap={tokens.space.medium}
+      padding={tokens.space.large}
+    >
+      <Flex justifyContent="space-between" alignItems="end">
+        <Heading level={2}>Storage</Heading>
+      </Flex>
+
+      <Divider />
       <StorageBrowser.Provider
         displayText={{
           LocationDetailView: {

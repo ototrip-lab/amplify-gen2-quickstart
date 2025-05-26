@@ -1,7 +1,5 @@
 "use client";
 
-import { useTheme, View } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
 import { Suspense, useState } from "react";
 
 import { LoadingSpinner } from "../_components/LoadingSpinner";
@@ -93,14 +91,10 @@ const WikiListComponent = () => {
 };
 
 const App = () => {
-  const { tokens } = useTheme();
-
   return (
-    <View padding={tokens.space.large}>
-      <Suspense fallback={<LoadingSpinner />}>
-        <WikiListComponent />
-      </Suspense>
-    </View>
+    <Suspense fallback={<LoadingSpinner />}>
+      <WikiListComponent />
+    </Suspense>
   );
 };
 

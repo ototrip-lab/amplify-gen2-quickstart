@@ -1,6 +1,5 @@
 "use client";
 
-import "@aws-amplify/ui-react/styles.css";
 import { Suspense } from "react";
 
 import { LoadingSpinner } from "../_components/LoadingSpinner";
