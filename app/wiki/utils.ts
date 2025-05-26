@@ -1,4 +1,4 @@
-import { WikiItem } from "./useData";
+import type { WikiItem } from "./types";
 
 /**
  * Separate path and display name from title
@@ -41,4 +41,34 @@ export const getPath = (title: string): string => {
 export const getItemLevel = (item: WikiItem): number => {
   const path = getPath(item.title);
   return path.split("/").filter(Boolean).length;
+};
+
+/**
+ * Check if child item is descendant of parent item
+ */
+export const isDescendantOf = (
+  childTitle: string,
+  parentTitle: string,
+): boolean => {
+  const childPath = getPath(childTitle);
+  const parentPath = getPath(parentTitle);
+
+  if (parentPath === "/") return childPath !== "/";
+  return childPath.startsWith(parentPath + "/") || childPath === parentPath;
+};
+
+/**
+ * Organize items into tree structure
+ */
+export const organizeItemsIntoTree = (items: WikiItem[]) => {
+  return [...items].sort((a, b) => {
+    const pathA = getPath(a.title);
+    const pathB = getPath(b.title);
+
+    if (pathA !== pathB) {
+      return pathA.localeCompare(pathB);
+    }
+
+    return getDisplayName(a.title).localeCompare(getDisplayName(b.title));
+  });
 };
