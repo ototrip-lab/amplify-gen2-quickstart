@@ -57,14 +57,12 @@ const WikiListComponent = () => {
     setViewMode("list");
   };
 
-  // 一覧表示モード
   if (viewMode === "list") {
     return (
       <WikiList items={items} onSelect={handleSelect} onCreate={handleCreate} />
     );
   }
 
-  // 詳細表示モード
   if (viewMode === "detail" && selectedItem) {
     return (
       <MarkdownPreview
@@ -76,7 +74,6 @@ const WikiListComponent = () => {
     );
   }
 
-  // 編集モード
   if (viewMode === "edit" && selectedItem) {
     return (
       <MarkdownEditor

@@ -54,7 +54,7 @@ const CustomLocationsView = ({ identityID }: { identityID: string }) => {
   );
 };
 
-function MyLocationActionView() {
+const MyLocationActionView = () => {
   const state = useView("LocationDetail");
   switch (state.actionType) {
     case "copy":
@@ -67,7 +67,7 @@ function MyLocationActionView() {
     default:
       return <StorageBrowser.UploadView />;
   }
-}
+};
 
 const MyStorageBrowser = ({ identityID }: { identityID: string }) => {
   const state = useView("LocationDetail");
