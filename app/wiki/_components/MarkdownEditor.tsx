@@ -41,7 +41,11 @@ export const MarkdownEditor = ({
   };
 
   return (
-    <Flex direction="column" gap={tokens.space.medium}>
+    <Flex
+      direction="column"
+      gap={tokens.space.medium}
+      padding={tokens.space.large}
+    >
       <Flex justifyContent="space-between" alignItems="center">
         <Heading level={2}>Editing</Heading>
         <Button variation="link" onClick={onCancel}>

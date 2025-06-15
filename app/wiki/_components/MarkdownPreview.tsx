@@ -30,7 +30,11 @@ export const MarkdownPreview = ({
   const { tokens } = useTheme();
 
   return (
-    <Flex direction="column" gap={tokens.space.medium}>
+    <Flex
+      direction="column"
+      gap={tokens.space.medium}
+      padding={tokens.space.large}
+    >
       <Flex justifyContent="space-between" alignItems="center">
         <Heading level={2}>{item.title}</Heading>
         <Flex gap={tokens.space.small}>
