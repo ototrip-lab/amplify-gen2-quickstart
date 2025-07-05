@@ -50,7 +50,10 @@ const App = () => {
               <TableCell>
                 <Button
                   colorTheme="warning"
-                  onClick={() => deleteItem(item.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteItem(item.id);
+                  }}
                 >
                   delete
                 </Button>
