@@ -1,4 +1,4 @@
-import { env } from '$amplify/env/search';
+import { env } from '$amplify/env/webSearch';
 import { ChatBedrockConverse } from '@langchain/aws';
 import {
   BaseMessage,
