@@ -1,4 +1,4 @@
-import { env } from '$amplify/env/webSearch';
+// import { env } from '$amplify/env/webSearch';
 import { ChatBedrockConverse } from '@langchain/aws';
 import {
   BaseMessage,
@@ -43,7 +43,7 @@ type AuthenticatedEvent = {
 
 const tavilyTool = new TavilySearch({
   maxResults: 3,
-  tavilyApiKey: env.TAVILY_API_KEY,
+  // tavilyApiKey: env.TAVILY_API_KEY,
 });
 const model = new ChatBedrockConverse({
   model: CROSS_REGION_BEDROCK_MODEL_PATH,

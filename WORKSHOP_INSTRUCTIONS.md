@@ -86,20 +86,18 @@ http://localhost:3000 にアクセスして、各ページにシンプルなタ�
 
 Email認証機能を有効化し、ユーザー管理システムを構築します。
 
-### 実装手順
+### 手順
 
 #### Backend設定有効化
 
-ファイル: amplify/backend.ts
-
-以下のコメントアウトを外します
+amplify/backend.ts の認証設定を有効化します。
 
 ```ts
-// コメントアウトを外す
+// コメントアウト削除
 import { auth } from './auth/resource';
 
 const backend = defineBackend({
-  auth, // この行のコメントアウトを外す
+  auth, // コメントアウト削除
   // data,
   // storage,
   // chatHandler,
@@ -109,12 +107,10 @@ const backend = defineBackend({
 
 #### 認証UI有効化
 
-ファイル: app/_components/BasicLayout/index.tsx
-
-以下のコメントアウトを外します
+app/\_components/BasicLayout/index.tsx の認証UIを有効化します。
 
 ```ts
-// 以下のコメントアウトを外す
+// コメントアウト削除
 import {
   Authenticator,
   Flex,
@@ -127,7 +123,7 @@ import {
 } from "@aws-amplify/ui-react";
 
 const MainSection = ({ children, headerTitle }: Props) => {
-  const { authStatus } = useAuthenticator((context) => [context.authStatus]); // この行のコメントアウトを外す
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]); // コメントアウト削除
   const { tokens } = useTheme();
 
   return (
@@ -154,7 +150,7 @@ const MainSection = ({ children, headerTitle }: Props) => {
 };
 ```
 
-### 動作確認
+### 確認
 
 Amplifyサンドボックスで変更が自動デプロイされます。ブラウザでログイン画面が表示され、新規ユーザー登録とログインができることを確認してください。ログイン後、ページ内容が表示されます。
 
@@ -166,16 +162,14 @@ Amplifyサンドボックスで変更が自動デプロイされます。ブラ�
 
 Amazon Bedrock統合とAI会話機能の基本部分を実装します。
 
-### 実装手順
+### 手順
 
 #### Data設定有効化
 
-ファイル: amplify/data/resource.ts
-
-以下の変更を行います：
+amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
-// コメントアウトを外す
+// コメントアウト削除
 import { CROSS_REGION_BEDROCK_MODEL_PATH } from "../constants";
 import { chatHandler } from "./chatHandler/resource";
 
@@ -204,24 +198,22 @@ chat: a
 
 #### Backend設定有効化
 
-ファイル: amplify/backend.ts
-
-以下のコメントアウトを外します
+amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// 以下のコメントアウトを外す
+// コメントアウト削除
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { chatHandler } from './data/chatHandler/resource';
 
-// 以下のコメントアウトを外す
+// コメントアウト削除
 import { chatHandler } from './data/chatHandler/resource';
 import { data } from './data/resource';
 
 const backend = defineBackend({
   auth,
-  data, // この行のコメントアウトを外す
+  data, // コメントアウト削除
   // storage,
-  chatHandler, // この行のコメントアウトを外す
+  chatHandler, // コメントアウト削除
   // webSearch,
 });
 
@@ -236,9 +228,7 @@ backend.chatHandler.resources.lambda.addToRolePolicy(
 
 #### AI Conversation機能有効化
 
-ファイル: app/_components/AIConversationLayout.tsx
-
-全てのコメントアウトを外します
+app/\_components/AIConversationLayout.tsx のAI Conversation機能を有効化します。
 
 ```ts
 import { View, useTheme } from '@aws-amplify/ui-react';
@@ -267,11 +257,11 @@ export default AIConversationLayout;
 
 ファイル: app/history/page.tsx
 
-全てのコメントアウトを外します。
+コメントアウト削除。
 
 ### 動作確認
 
-New Chat ボタンまたは /chat でAI会話ができることを確認してください。基本的なAI会話機能が動作します。
+New Chat ボタンまたは /chat でAIチャットを確認。基本的なAIチャット機能が動作します。
 
 ---
 
@@ -279,9 +269,9 @@ New Chat ボタンまたは /chat でAI会話ができることを確認して�
 
 ### 目標
 
-Web検索機能を追加してAI会話を拡張します。
+Tavily APIを使用したWeb検索機能をAIチャットに統合します。
 
-### 実装手順
+### 手順
 
 #### 外部サービス API Key設定
 
@@ -291,14 +281,28 @@ npx ampx sandbox secret set TAVILY_API_KEY
 # APIキー取得: https://tavily.com/
 ```
 
-#### Backend設定有効化
+#### WebSearch Resource設定有効化
 
-ファイル: amplify/backend.ts
-
-以下のコメントアウトを外します
+amplify/data/webSearch/resource.ts のWebSearch Resource設定を有効化します。
 
 ```ts
-// 以下のコメントアウトを外す
+export const webSearch = defineFunction({
+  name: 'webSearch',
+  entry: './index.ts',
+  timeoutSeconds: 30,
+  runtime: 22,
+  environment: {
+    TAVILY_API_KEY: secret('TAVILY_API_KEY'), // コメントアウト削除
+  },
+});
+```
+
+#### Backend設定有効化
+
+amplify/backend.ts のBackend設定を有効化します。
+
+```ts
+// コメントアウト削除
 import { webSearch } from './data/webSearch/resource';
 
 const backend = defineBackend({
@@ -306,7 +310,7 @@ const backend = defineBackend({
   chatHandler,
   data,
   // storage,
-  webSearch, // この行のコメントアウトを外す
+  webSearch, // コメントアウト削除
 });
 
 // 以下のBedrock権限設定も有効化
@@ -320,9 +324,7 @@ backend.webSearch.resources.lambda.addToRolePolicy(
 
 #### Data設定有効化
 
-ファイル: amplify/data/resource.ts
-
-以下のコメントアウトを外します
+amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
 // webSearchハンドラーのインポートを有効化
@@ -363,13 +365,20 @@ chat: a
 
 #### WebSearch実装修正
 
-ファイル: amplify/data/webSearch/index.ts
-
-以下のコメントアウトを外します
+amplify/data/webSearch/index.ts のWebSearch実装を修正します。
 
 ```ts
+// envインポートを有効化
+import { env } from '$amplify/env/webSearch';
+
 // Schema型のインポートを有効化
 import type { Schema } from '../resource';
+
+// TAVILY_API_KEYを有効化（46行目）
+const tavilyTool = new TavilySearch({
+  maxResults: 3,
+  tavilyApiKey: env.TAVILY_API_KEY, // コメントアウト削除
+});
 
 // メインのhandler関数を有効化
 export const handler: Schema['webSearch']['functionHandler'] = async (
@@ -419,7 +428,7 @@ export const handler: Schema['webSearch']['functionHandler'] = async (
 
 ### 動作確認
 
-AI Chatで外部情報を検索して回答する機能が動作することを確認してください。
+AIチャットで外部情報を検索して回答する機能が動作することを確認してください。
 
 ---
 
@@ -429,13 +438,11 @@ AI Chatで外部情報を検索して回答する機能が動作することを�
 
 GraphQL APIとDynamoDBを有効化し、Wiki CRUD機能を実装します。
 
-### 実装手順
+### 手順
 
 #### Data設定修正
 
-ファイル: amplify/data/resource.ts
-
-以下のコメントアウトを外します
+amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
 // UserWikiモデルを有効化
@@ -475,9 +482,7 @@ chat: a
 
 #### Wiki機能有効化
 
-ファイル: app/wiki/page.tsx
-
-全てのコメントアウトを外して、元の機能を有効化します：
+app/wiki/page.tsx のWiki機能を有効化します。
 
 ```ts
 import { useState } from "react";
@@ -507,7 +512,7 @@ const App = () => {
 
 ### 動作確認
 
-/wiki ページでWiki一覧が表示され、新しいWiki記事の作成、編集、削除ができることを確認してください。所有者のみが編集可能な認可機能も動作します。AI ChatでWikiデータを参照した回答も可能になります。
+/wiki ページでWiki一覧が表示され、新しいWiki記事の作成、編集、削除を確認。所有者のみが編集可能な認可機能も動作します。AIチャットでWikiデータを参照した回答も可能になります。
 
 ---
 
@@ -517,16 +522,14 @@ const App = () => {
 
 S3バケットを有効化し、ファイルアップロード・管理機能を実装します。
 
-### 実装手順
+### 手順
 
 #### Backend設定有効化
 
-ファイル: amplify/backend.ts
-
-以下のコメントアウトを外します
+amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// 以下のコメントアウトを外す
+// コメントアウト削除
 import { storage } from './storage/resource';
 
 const backend = defineBackend({
@@ -534,15 +537,13 @@ const backend = defineBackend({
   chatHandler,
   webSearch,
   data,
-  storage, // この行のコメントアウトを外す
+  storage, // コメントアウト削除
 });
 ```
 
 #### Storage機能有効化
 
-ファイル: app/storage/page.tsx
-
-全てのコメントアウトを外して、元の機能を有効化します：
+app/storage/page.tsx のStorage機能を有効化します。
 
 ```ts
 import { Divider, Flex, Heading, useTheme } from "@aws-amplify/ui-react";
@@ -585,7 +586,7 @@ const App = () => {
 
 ### 動作確認
 
-/storage ページでファイルアップロード機能が表示され、PDFファイルをアップロードできることを確認してください。アップロードしたファイル一覧が表示され、ファイルをダウンロードできます。AI Chatでストレージファイルを参照した回答も可能になります。
+/storage ページでファイルアップロード機能が表示され、PDFファイルをアップロードできることを確認してください。アップロードしたファイル一覧が表示され、ファイルをダウンロードできます。
 
 ---
 
@@ -595,13 +596,11 @@ const App = () => {
 
 カスタムLambda関数によるS3イベント処理の自動化を実装します。
 
-### 実装手順
+### 手順
 
 #### Data設定有効化
 
-ファイル: amplify/data/resource.ts
-
-以下のコメントアウトを外します
+amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
 // PublicStorageモデルを有効化
@@ -646,12 +645,10 @@ chat: a
 
 #### Backend設定有効化
 
-ファイル: amplify/backend.ts
-
-以下のコメントアウトを外します
+amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// 以下のコメントアウトを外す
+// コメントアウト削除
 import { OnUploaded } from './custom/onUploaded/resource';
 
 // 最後に以下のカスタムリソースを有効化
@@ -667,71 +664,43 @@ const onUploaded = new OnUploaded(
 
 ### 動作確認
 
-New Chat ボタンまたは /chat でAI会話ができることを確認してください。Wikiデータを参照した回答が得られ、ストレージファイルを参照した回答も可能です。/history でチャット履歴が確認でき、Web検索機能も動作します（Tavily設定済みの場合）。
+New Chat ボタンまたは /chat でAIチャットを確認。Wikiデータを参照した回答が得られ、ストレージファイルを参照した回答も可能です。/history でチャット履歴が確認でき、Web検索機能も動作します（Tavily設定済みの場合）。
 
 ---
+
+## Step 7: System Prompt最適化
+
+### 目標
+
+ハードコードされたシステムプロンプトを外部ファイルから読み込むように変更し、保守性を向上させます。
+
+### 手順
+
+#### Data設定修正
+
+amplify/data/resource.ts のData設定を修正します。
+
+```ts
+// ハードコードされたプロンプトを削除
+// const DETAILED_SYSTEM_PROMPT = "あなたは優秀なAIアシスタントです。";
+
+// 外部ファイルからのインポートを有効化
+import { DETAILED_SYSTEM_PROMPT } from './prompts';
+```
+
+### 動作確認
+
+システムプロンプト読み込み確認
 
 ---
 
 ## ワークショップ完了
 
-### 構築したアーキテクチャ
+AWS Amplify Gen2の全機能実装完了。
 
-Frontend (Next.js)
-
-- React UI Components
-- Authentication
-- Wiki CRUD
-- File Upload
-- AI Chat
-
-AWS Amplify Gen2
-
-- GraphQL API
-- DynamoDB
-- S3 Storage
-- Custom Lambda
-
-AI Services
-
-- Amazon Bedrock
-- Web Search
-
-### 習得したスキル
-
-Authentication: Cognito認証、認可制御
-Data: GraphQL、DynamoDB、リアルタイム同期
-Storage: S3、ファイル管理、権限制御
-AI Integration: Bedrock、RAG、Function Calling
-Custom Lambda: イベント処理、CDK統合
-
-### 次のステップ
-
-本番環境へのデプロイ、追加機能の実装、パフォーマンス最適化、セキュリティ強化を検討してください。
-
----
-
-## トラブルシューティング
-
-### よくある問題
-
-ログイン画面が表示されない場合
-amplify/backend.tsでauthのコメントアウトが外れているか確認してください。BasicLayout/index.tsxで認証UIが有効化されているか確認してください。
-
-Wiki機能でエラーが発生する場合
-amplify/backend.tsでdataのコメントアウトが外れているか確認してください。Amplifyサンドボックスが正常に動作しているか確認してください。
-
-AI Chatでエラーが発生する場合
-Bedrock権限設定が有効化されているか確認してください。リージョン設定（amplify/constants.ts）を確認してください。
-
-### デバッグコマンド
+### リソースの削除
 
 ```bash
-# Amplifyリソース状態確認
-npx ampx sandbox --list
-
-# ログ確認
-npx ampx sandbox logs
+$ npx ampx sandbox delete
+$ npx ampx sandbox secret remove TAVILY_API_KEY
 ```
-
-AWS Amplify Gen2の完全な機能を体験できました。

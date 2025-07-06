@@ -6,6 +6,6 @@ export const webSearch = defineFunction({
   timeoutSeconds: 30,
   runtime: 22,
   environment: {
-    TAVILY_API_KEY: secret('TAVILY_API_KEY'),
+    // TAVILY_API_KEY: secret('TAVILY_API_KEY'),
   },
 });
