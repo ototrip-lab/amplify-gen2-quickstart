@@ -2,11 +2,11 @@
 
 import {
   Authenticator,
-  Flex,
+  // Flex,
   Grid,
   Heading,
-  ScrollView,
-  useAuthenticator,
+  // ScrollView,
+  // useAuthenticator,
   useTheme,
   View,
 } from "@aws-amplify/ui-react";
@@ -19,11 +19,36 @@ type Props = {
   children: React.ReactNode;
 };
 
+const MainSection = ({ children, headerTitle }: Props) => {
+  // const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+  const { tokens } = useTheme();
+
+  return (
+    <>
+      <View textAlign="center" padding={tokens.space.large}>
+        <View textAlign="center">
+          <Heading level={2}>{headerTitle}</Heading>
+        </View>
+      </View>
+      {/* {authStatus === 'authenticated' ? (
+        <ScrollView width='100%'>{children}</ScrollView>
+      ) : (
+        <Flex
+          justifyContent='center'
+          alignItems='center'
+          paddingTop={tokens.space.xxxl}
+        >
+          <Authenticator />
+        </Flex>
+      )} */}
+    </>
+  );
+};
+
 const Layout = ({
   children,
   headerTitle = "Welcome to Amplify AI Kit",
 }: Props) => {
-  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
   const { tokens } = useTheme();
 
   return (
@@ -41,22 +66,7 @@ const Layout = ({
         backgroundColor={tokens.colors.background.secondary}
         overflow="auto"
       >
-        <View textAlign="center" padding={tokens.space.large}>
-          <View textAlign="center">
-            <Heading level={2}>{headerTitle}</Heading>
-          </View>
-        </View>
-        {authStatus === "authenticated" ? (
-          <ScrollView width="100%">{children}</ScrollView>
-        ) : (
-          <Flex
-            justifyContent="center"
-            alignItems="center"
-            paddingTop={tokens.space.xxxl}
-          >
-            <Authenticator />
-          </Flex>
-        )}
+        <MainSection headerTitle={headerTitle}>{children}</MainSection>
       </View>
     </Grid>
   );

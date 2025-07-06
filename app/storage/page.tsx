@@ -1,17 +1,17 @@
 "use client";
 
 import { Divider, Flex, Heading, useTheme } from "@aws-amplify/ui-react";
-import { FileUploader } from "@aws-amplify/ui-react-storage";
-import {
-  createAmplifyAuthAdapter,
-  createStorageBrowser,
-} from "@aws-amplify/ui-react-storage/browser";
+// import { FileUploader } from "@aws-amplify/ui-react-storage";
+// import {
+//   createAmplifyAuthAdapter,
+//   createStorageBrowser,
+// } from "@aws-amplify/ui-react-storage/browser";
 
-import "@/app/_components/ConfigureAmplify";
+// import "@/app/_components/ConfigureAmplify";
 
-const { StorageBrowser } = createStorageBrowser({
-  config: createAmplifyAuthAdapter(),
-});
+// const { StorageBrowser } = createStorageBrowser({
+//   config: createAmplifyAuthAdapter(),
+// });
 
 const App = () => {
   const { tokens } = useTheme();
@@ -26,13 +26,13 @@ const App = () => {
         <Heading level={2}>Storage</Heading>
       </Flex>
       <Divider />
-      <FileUploader
+      {/* <FileUploader
         acceptedFileTypes={["application/pdf"]}
         path="public/"
         maxFileCount={1}
         isResumable
       />
-      <StorageBrowser />
+      <StorageBrowser /> */}
     </Flex>
   );
 };
