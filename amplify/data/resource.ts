@@ -54,7 +54,7 @@ const schema = a.schema({
   //       resourcePath: CROSS_REGION_BEDROCK_MODEL_PATH,
   //     },
   //     systemPrompt: DETAILED_SYSTEM_PROMPT,
-  //     // handler: chatHandler,
+  //     handler: chatHandler,
   //     tools: [
   //       // a.ai.dataTool({
   //       //   name: "WikiQuery",
