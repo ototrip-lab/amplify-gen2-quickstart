@@ -27,6 +27,7 @@
     "@aws-amplify/backend": "1.16.1",
     "@aws-amplify/backend-cli": "1.8.0",
     "@biomejs/biome": "1.9.4",
+    "@parcel/watcher": "2.5.1",
     "@types/node": "22.16.2",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
