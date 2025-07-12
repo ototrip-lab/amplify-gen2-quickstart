@@ -31,7 +31,7 @@ Amplify AI Kit は、AWS Amplify が提供する機能の一つで、Amazon Bedr
 5. ファイルアップロード・ストレージ機能
 6. カスタムLambda関数による自動化処理
 
-![System](docs/image/system.png)
+<img src="docs/image/system.png" width="300">
 
 ### 注意事項
 
