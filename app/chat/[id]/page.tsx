@@ -17,7 +17,8 @@ const App = ({ params }: { params: Promise<{ id: string }> }) => {
   }, []);
 
   // STEP2 Action: コメントアウト削除
-  // return <AIConversationLayout id={id} key={id} />;
+  //   return <AIConversationLayout id={id} key={id} />;
+  // }
 
   // STEP2 Action: 以下削除
   return (
