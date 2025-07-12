@@ -51,9 +51,9 @@ Amplify AI Kit を使用するには Amazon Bedrock のモデルアクセス権�
 Amazon Bedrock の使用には料金が発生するため、料金体系を確認してください。
 
 1. Amazon Bedrock コンソールで「モデルアクセス」を選択
-2. 「モデルアクセスを変更」から Claude Sonnet v4 を有効化（通常数分で承認）
+2. 「モデルアクセスを変更」から Nova Pro を有効化（通常数分で承認）
 
-※ アカウント全体でBedrockの利用履歴がない場合はモデルアクセスクォーター制限が厳しい可能性があります。その場合は、Amazon Nova Proも許可申請に追加してください。
+※ Bedrockのモデルのクォーター制限の関係上、Nova Pro をデフォルトで使用します。精度を上げたい場合はClaude Sonnetなどのモデルを使用してください。
 
 ---
 
