@@ -45,6 +45,8 @@ Amplify AI Kit は、AWS Amplify が提供する機能の一つで、Amazon Bedr
 
 https://docs.amplify.aws/react/start/account-setup/
 
+また、node.js実行環境（推奨 v22）が必要です。
+
 ### Amazon Bedrock のモデル利用申請
 
 Amplify AI Kit を使用するには Amazon Bedrock のモデルアクセス権が必要です。
