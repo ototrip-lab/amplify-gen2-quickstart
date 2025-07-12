@@ -14,21 +14,19 @@ type OnUploadedProps = {
 };
 
 export class OnUploaded extends Construct {
-  public func?: NodejsFunction;
-
   constructor(scope: Construct, id: string, props: OnUploadedProps) {
     super(scope, id);
 
     // Amplify resourcesを参照
-    const storage = Bucket.fromBucketName(this, 'storage', props.bucketName);
+    const storage = Bucket.fromBucketName(this, 'Storage', props.bucketName);
     const dynamoDbTable = Table.fromTableName(
       this,
-      'dynamoDbTable',
+      'DynamoDbTable',
       props.dynamoDbTableName
     );
 
     // Lambda Functions
-    const func = new NodejsFunction(this, 'onUpLoaded', {
+    const func = new NodejsFunction(this, 'OnUpLoaded', {
       entry: url.fileURLToPath(new URL('index.ts', import.meta.url)),
       runtime: Runtime.NODEJS_22_X,
       timeout: Duration.minutes(5),
@@ -55,6 +53,5 @@ export class OnUploaded extends Construct {
         resources: ['*'],
       })
     );
-    this.func = func;
   }
 }
