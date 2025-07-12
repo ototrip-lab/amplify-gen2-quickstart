@@ -66,6 +66,7 @@
 //   );
 // };
 
+// STEP2 Action: その他削除
 const App = () => {
   return (
     <div>
