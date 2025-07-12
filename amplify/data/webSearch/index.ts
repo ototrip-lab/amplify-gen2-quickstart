@@ -1,15 +1,17 @@
+// STEP3 Action: envインポートを有効化
 // import { env } from '$amplify/env/webSearch';
-import { ChatBedrockConverse } from '@langchain/aws';
+import { ChatBedrockConverse } from "@langchain/aws";
 import {
   BaseMessage,
   HumanMessage,
   SystemMessage,
-} from '@langchain/core/messages';
-import { ChatPromptTemplate } from '@langchain/core/prompts';
-import { RunnableLambda } from '@langchain/core/runnables';
-import { TavilySearch } from '@langchain/tavily';
+} from "@langchain/core/messages";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { RunnableLambda } from "@langchain/core/runnables";
+import { TavilySearch } from "@langchain/tavily";
 
-import { CROSS_REGION_BEDROCK_MODEL_PATH } from '../../constants';
+import { CROSS_REGION_BEDROCK_MODEL_PATH } from "../../constants";
+// STEP3 Action: Schema型のインポートを有効化
 // import type { Schema } from '../resource';
 
 // 型定義の追加
@@ -41,6 +43,7 @@ type AuthenticatedEvent = {
   };
 };
 
+// STEP3 Action: コメントアウト削除
 const tavilyTool = new TavilySearch({
   maxResults: 3,
   // tavilyApiKey: env.TAVILY_API_KEY,
@@ -51,8 +54,8 @@ const model = new ChatBedrockConverse({
 
 const modelWithTavily = model.bindTools([tavilyTool]);
 const prompt = ChatPromptTemplate.fromMessages([
-  new SystemMessage('あなたは優秀な検索エージェントです。'),
-  ['placeholder', '{messages}'],
+  new SystemMessage("あなたは優秀な検索エージェントです。"),
+  ["placeholder", "{messages}"],
 ]);
 const chain = prompt.pipe(modelWithTavily);
 
@@ -110,6 +113,7 @@ const validateInput = (message: string): void => {
   }
 };
 
+// STEP3 Action: メインのhandler関数を有効化
 // export const handler: Schema['webSearch']['functionHandler'] = async (
 //   event
 // ) => {
@@ -149,6 +153,7 @@ const validateInput = (message: string): void => {
 //   }
 // };
 
+// STEP3 Action: 仮のhandlerを削除
 export const handler = async (event: AuthenticatedEvent) => {
   // 何もしない場合のデフォルトレスポンス
 };
