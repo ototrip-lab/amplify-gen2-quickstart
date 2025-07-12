@@ -1,16 +1,18 @@
 import { defineBackend } from "@aws-amplify/backend";
-// STEP2 Action: コメントアウト削除
-// import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
-
 // STEP1 Action: コメントアウト削除
 // import { auth } from './auth/resource';
+
 // STEP2 Action: コメントアウト削除
+// import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 // import { chatHandler } from './data/chatHandler/resource';
 // import { data } from './data/resource';
+
 // STEP3 Action: コメントアウト削除
 // import { webSearch } from './data/webSearch/resource';
+
 // STEP5 Action: コメントアウト削除
 // import { storage } from './storage/resource';
+
 // STEP6 Action: コメントアウト削除
 // import { OnUploaded } from './custom/onUploaded/resource';
 
