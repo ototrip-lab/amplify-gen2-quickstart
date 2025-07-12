@@ -4,23 +4,22 @@ import { defineBackend } from "@aws-amplify/backend";
 
 // STEP1 Action: コメントアウト削除
 // import { auth } from './auth/resource';
-// STEP6 Action: コメントアウト削除
-// import { OnUploaded } from './custom/onUploaded/resource';
 // STEP2 Action: コメントアウト削除
 // import { chatHandler } from './data/chatHandler/resource';
-// STEP2 Action: コメントアウト削除
 // import { data } from './data/resource';
 // STEP3 Action: コメントアウト削除
 // import { webSearch } from './data/webSearch/resource';
 // STEP5 Action: コメントアウト削除
 // import { storage } from './storage/resource';
+// STEP6 Action: コメントアウト削除
+// import { OnUploaded } from './custom/onUploaded/resource';
 
 const backend = defineBackend({
   // auth, // STEP1 Action: コメントアウト削除
   // data, // STEP2 Action: コメントアウト削除
-  // storage, // STEP5 Action: コメントアウト削除
   // chatHandler, // STEP2 Action: コメントアウト削除
   // webSearch, // STEP3 Action: コメントアウト削除
+  // storage, // STEP5 Action: コメントアウト削除
 });
 
 // STEP2 Action: 以下のBedrock権限設定も有効化

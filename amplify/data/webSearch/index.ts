@@ -1,5 +1,6 @@
-// STEP3 Action: envインポートを有効化
+// STEP3 Action: コメントアウト削除
 // import { env } from '$amplify/env/webSearch';
+// import type { Schema } from '../resource';
 import { ChatBedrockConverse } from "@langchain/aws";
 import {
   BaseMessage,
@@ -11,8 +12,6 @@ import { RunnableLambda } from "@langchain/core/runnables";
 import { TavilySearch } from "@langchain/tavily";
 
 import { CROSS_REGION_BEDROCK_MODEL_PATH } from "../../constants";
-// STEP3 Action: Schema型のインポートを有効化
-// import type { Schema } from '../resource';
 
 // 型定義の追加
 type BedrockResponse = BaseMessage & {

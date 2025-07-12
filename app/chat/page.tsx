@@ -2,8 +2,6 @@
 
 // STEP2 Action: コメントアウト削除
 // import { AIConversationLayout } from "@/app/_components/AIConversationLayout";
-
-// STEP2 Action: コメントアウト削除
 // export default AIConversationLayout;
 
 // STEP2 Action: その他削除

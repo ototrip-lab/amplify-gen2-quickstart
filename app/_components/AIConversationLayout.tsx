@@ -1,13 +1,8 @@
 // STEP2 Action: コメントアウト削除
 // import { View, useTheme } from "@aws-amplify/ui-react";
-// STEP2 Action: コメントアウト削除
 // import { AIConversation } from "@aws-amplify/ui-react-ai";
-// STEP2 Action: コメントアウト削除
 // import Markdown from "react-markdown";
-// STEP2 Action: コメントアウト削除
 // import rehypeSanitize from "rehype-sanitize";
-
-// STEP2 Action: コメントアウト削除
 // import { useAIConversation } from "@/app/client";
 
 export const AIConversationLayout = ({ id }: { id?: string }) => {

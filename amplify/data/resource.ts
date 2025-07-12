@@ -2,12 +2,11 @@ import { a, defineData, type ClientSchema } from "@aws-amplify/backend";
 
 // STEP2 Action: コメントアウト削除
 // import { CROSS_REGION_BEDROCK_MODEL_PATH } from "../constants";
-// STEP2 Action: コメントアウト削除
 // import { chatHandler } from "./chatHandler/resource";
-// STEP7 Action: 外部ファイルからのインポートを有効化
-// import { DETAILED_SYSTEM_PROMPT } from "./prompts";
 // STEP3 Action: コメントアウト削除
 // import { webSearch } from "./webSearch/resource";
+// STEP7 Action: 外部ファイルからのインポートを有効化
+// import { DETAILED_SYSTEM_PROMPT } from "./prompts";
 
 // STEP7 Action: ハードコードされたプロンプトを削除
 const DETAILED_SYSTEM_PROMPT = "あなたは優秀なAIアシスタントです。";

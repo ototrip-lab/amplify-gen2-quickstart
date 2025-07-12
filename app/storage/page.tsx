@@ -3,16 +3,11 @@
 import { Divider, Flex, Heading, useTheme } from "@aws-amplify/ui-react";
 // STEP5 Action: コメントアウト削除
 // import { FileUploader } from "@aws-amplify/ui-react-storage";
-// STEP5 Action: コメントアウト削除
 // import {
 //   createAmplifyAuthAdapter,
 //   createStorageBrowser,
 // } from "@aws-amplify/ui-react-storage/browser";
-
-// STEP5 Action: コメントアウト削除
 // import "@/app/_components/ConfigureAmplify";
-
-// STEP5 Action: コメントアウト削除
 // const { StorageBrowser } = createStorageBrowser({
 //   config: createAmplifyAuthAdapter(),
 // });

@@ -12,10 +12,7 @@
 //   Text,
 //   useTheme,
 // } from "@aws-amplify/ui-react";
-// STEP2 Action: コメントアウト削除
 // import { useRouter } from "next/navigation";
-
-// STEP2 Action: コメントアウト削除
 // import { useData } from "./useData";
 
 // STEP2 Action: コメントアウト削除し、初期記述 `App` を削除

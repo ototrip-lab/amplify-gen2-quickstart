@@ -2,19 +2,11 @@
 
 // STEP4 Action: コメントアウト削除
 // import { useState } from "react";
-
-// STEP4 Action: コメントアウト削除
 // import { MarkdownEditor } from "./_components/MarkdownEditor";
-// STEP4 Action: コメントアウト削除
 // import { MarkdownPreview } from "./_components/MarkdownPreview";
-// STEP4 Action: コメントアウト削除
 // import { WikiList } from "./_components/WikiList";
-// STEP4 Action: コメントアウト削除
 // import type { WikiItem } from "./types";
-// STEP4 Action: コメントアウト削除
 // import { useWikiData } from "./useWikiData";
-
-// STEP4 Action: コメントアウト削除
 // type ViewMode = "list" | "detail" | "edit";
 
 // STEP4 Action: 以下全ての関数とreturn文のコメントアウトを外してください
