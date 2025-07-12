@@ -2,9 +2,10 @@
 
 import {
   Authenticator,
-  // Flex,
   Grid,
   Heading,
+  // STEP1 Action: コメントアウト削除
+  // Flex,
   // ScrollView,
   // useAuthenticator,
   useTheme,
@@ -20,7 +21,7 @@ type Props = {
 };
 
 const MainSection = ({ children, headerTitle }: Props) => {
-  // const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+  // const { authStatus } = useAuthenticator((context) => [context.authStatus]); // STEP1 Action: コメントアウト削除
   const { tokens } = useTheme();
 
   return (
@@ -30,6 +31,7 @@ const MainSection = ({ children, headerTitle }: Props) => {
           <Heading level={2}>{headerTitle}</Heading>
         </View>
       </View>
+      {/* STEP1 Action: コメントアウト削除 */}
       {/* {authStatus === 'authenticated' ? (
         <ScrollView width='100%'>{children}</ScrollView>
       ) : (

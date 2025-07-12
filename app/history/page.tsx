@@ -1,5 +1,6 @@
 "use client";
 
+// STEP2 Action: コメントアウト削除
 // import {
 //   Button,
 //   Flex,
@@ -12,9 +13,9 @@
 //   useTheme,
 // } from "@aws-amplify/ui-react";
 // import { useRouter } from "next/navigation";
-
 // import { useData } from "./useData";
 
+// STEP2 Action: コメントアウト削除し、初期記述 `App` を削除
 // const App = () => {
 //   const router = useRouter();
 //   const { tokens } = useTheme();
@@ -65,6 +66,7 @@
 //   );
 // };
 
+// STEP2 Action: その他削除
 const App = () => {
   return (
     <div>

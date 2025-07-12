@@ -51,9 +51,9 @@ Amplify AI Kit を使用するには Amazon Bedrock のモデルアクセス権�
 Amazon Bedrock の使用には料金が発生するため、料金体系を確認してください。
 
 1. Amazon Bedrock コンソールで「モデルアクセス」を選択
-2. 「モデルアクセスを変更」から Claude Sonnet v4 を有効化（通常数分で承認）
+2. 「モデルアクセスを変更」から Nova Pro を有効化（通常数分で承認）
 
-※ アカウント全体でBedrockの利用履歴がない場合はモデルアクセスクォーター制限が厳しい可能性があります。その場合は、Amazon Nova Proも許可申請に追加してください。
+※ Bedrockのモデルのクォーター制限の関係上、Nova Pro をデフォルトで使用します。精度を上げたい場合はClaude Sonnetなどのモデルを使用してください。
 
 ---
 
@@ -112,11 +112,11 @@ amplify/backend.ts の認証設定を有効化します。
 ※ 作業が必要なコメントの冒頭に `Action: ` を記載しております。
 
 ```ts
-// Action: コメントアウト削除
+// STEP1 Action: コメントアウト削除
 import { auth } from './auth/resource';
 
 const backend = defineBackend({
-  auth, // Action: コメントアウト削除
+  auth, // STEP1 Action: コメントアウト削除
   // data,
   // storage,
   // chatHandler,
@@ -132,7 +132,7 @@ const backend = defineBackend({
 app/\_components/BasicLayout/index.tsx の認証UIを有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP1 Action: コメントアウト削除
 import {
   Authenticator,
   Flex,
@@ -145,7 +145,7 @@ import {
 } from "@aws-amplify/ui-react";
 
 const MainSection = ({ children, headerTitle }: Props) => {
-  const { authStatus } = useAuthenticator((context) => [context.authStatus]); // Action: コメントアウト削除
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]); // STEP1 Action: コメントアウト削除
   const { tokens } = useTheme();
 
   return (
@@ -155,7 +155,7 @@ const MainSection = ({ children, headerTitle }: Props) => {
           <Heading level={2}>{headerTitle}</Heading>
         </View>
       </View>
-      {/* Action: 以下のブロック全体のコメントアウトを外す */}
+      {/* STEP1 Action: 以下のブロック全体のコメントアウトを外す */}
       {authStatus === 'authenticated' ? (
         <ScrollView width='100%'>{children}</ScrollView>
       ) : (
@@ -198,11 +198,11 @@ amplify/data/resource.ts のData設定を有効化します。
 > /Amplify以下の複数ファイルを変更する場合は、`npx ampx sandbox` コマンドを一度停止して修正が完了してから再開することをお勧めします。
 
 ```ts
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 import { CROSS_REGION_BEDROCK_MODEL_PATH } from "../constants";
 import { chatHandler } from "./chatHandler/resource";
 
-// Action: Todoモデルを削除
+// STEP2 Action: Todoモデルを削除
 // Todo: a
 //   .model({
 //     title: a.string().required(),
@@ -210,7 +210,7 @@ import { chatHandler } from "./chatHandler/resource";
 //   })
 //   .authorization((allow) => allow.owner()),
 
-// Action: chatの定義のコメントアウトを外す
+// STEP2 Action: chatの定義のコメントアウトを外す
 chat: a
   .conversation({
     aiModel: {
@@ -234,23 +234,23 @@ chat: a
 amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { chatHandler } from './data/chatHandler/resource';
 
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 import { chatHandler } from './data/chatHandler/resource';
 import { data } from './data/resource';
 
 const backend = defineBackend({
   auth,
-  data, // Action: コメントアウト削除
+  data, // STEP2 Action: コメントアウト削除
   // storage,
-  chatHandler, // Action: コメントアウト削除
+  chatHandler, // STEP2 Action: コメントアウト削除
   // webSearch,
 });
 
-// Action: 以下のBedrock権限設定も有効化
+// STEP2 Action: 以下のBedrock権限設定も有効化
 backend.chatHandler.resources.lambda.addToRolePolicy(
   new PolicyStatement({
     actions: ['bedrock:InvokeModel', 'bedrock:InvokeModelWithResponseStream'],
@@ -276,7 +276,7 @@ import rehypeSanitize from 'rehype-sanitize';
 import { useAIConversation } from '@/app/client';
 
 export const AIConversationLayout = ({ id }: { id?: string }) => {
-  // 全ての実装のコメントアウトを外してください
+  // STEP2 全ての実装のコメントアウトを外してください
 };
 ```
 
@@ -285,25 +285,25 @@ export const AIConversationLayout = ({ id }: { id?: string }) => {
 app/chat/page.tsx を下記の通り書き換えます。
 
 ```ts
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 import { AIConversationLayout } from '@/app/_components/AIConversationLayout';
 
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 export default AIConversationLayout;
 
-// Action: その他削除
+// STEP2 Action: その他削除
 ```
 
 app/chat/[id]/page.tsx を下記の通り書き換えます。
 
 ```ts
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 import { AIConversationLayout } from '@/app/_components/AIConversationLayout';
 
-// Action: コメントアウト削除
+// STEP2 Action: コメントアウト削除
 // return <AIConversationLayout id={id} key={id} />;
 
-// Action: 以下削除
+// STEP2 Action: 以下削除
 // return (
 //   <div>
 //     <h1>Chat Page</h1>
@@ -357,7 +357,7 @@ export const webSearch = defineFunction({
   timeoutSeconds: 30,
   runtime: 22,
   environment: {
-    TAVILY_API_KEY: secret('TAVILY_API_KEY'), // Action: コメントアウト削除
+    TAVILY_API_KEY: secret('TAVILY_API_KEY'), // STEP3 Action: コメントアウト削除
   },
 });
 ```
@@ -367,7 +367,7 @@ export const webSearch = defineFunction({
 amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP3 Action: コメントアウト削除
 import { webSearch } from './data/webSearch/resource';
 
 const backend = defineBackend({
@@ -375,10 +375,10 @@ const backend = defineBackend({
   chatHandler,
   data,
   // storage,
-  webSearch, // Action: コメントアウト削除
+  webSearch, // STEP3 Action: コメントアウト削除
 });
 
-// Action: 以下のBedrock権限設定も有効化
+// STEP3 Action: 以下のBedrock権限設定も有効化
 backend.webSearch.resources.lambda.addToRolePolicy(
   new PolicyStatement({
     actions: ['bedrock:InvokeModel'],
@@ -392,10 +392,10 @@ backend.webSearch.resources.lambda.addToRolePolicy(
 amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP3 Action: コメントアウト削除
 import { webSearch } from "./webSearch/resource";
 
-// Action: webSearch関数の定義を有効化
+// STEP3 Action: webSearch関数の定義を有効化
 webSearch: a
   .query()
   .arguments({
@@ -409,7 +409,7 @@ webSearch: a
   .handler(a.handler.function(webSearch))
   .authorization((allow) => allow.authenticated()),
 
-// Action: chatのtoolsにwebSearchツールを追加
+// STEP3 Action: chatのtoolsにwebSearchツールを追加
 chat: a
   .conversation({
     aiModel: {
@@ -433,19 +433,19 @@ chat: a
 amplify/data/webSearch/index.ts のWebSearch実装を修正します。
 
 ```ts
-// Action: envインポートを有効化
+// STEP3 Action: envインポートを有効化
 import { env } from '$amplify/env/webSearch';
 
-// Action: Schema型のインポートを有効化
+// STEP3 Action: Schema型のインポートを有効化
 import type { Schema } from '../resource';
 
 // TAVILY_API_KEYを有効化
 const tavilyTool = new TavilySearch({
   maxResults: 3,
-  tavilyApiKey: env.TAVILY_API_KEY, // Action: コメントアウト削除
+  tavilyApiKey: env.TAVILY_API_KEY, // STEP3 Action: コメントアウト削除
 });
 
-// Action: メインのhandler関数を有効化
+// STEP3 Action: メインのhandler関数を有効化
 export const handler: Schema['webSearch']['functionHandler'] = async (
   event
 ) => {
@@ -485,7 +485,7 @@ export const handler: Schema['webSearch']['functionHandler'] = async (
   }
 };
 
-// Action: 仮のhandlerを削除
+// STEP3 Action: 仮のhandlerを削除
 // export const handler = async (event: AuthenticatedEvent) => {
 //   // 何もしない場合のデフォルトレスポンス
 // };
@@ -510,7 +510,7 @@ GraphQL APIとDynamoDBを有効化し、Wiki CRUD機能を実装します。
 amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
-// Action: UserWikiモデルを有効化
+// STEP4 Action: UserWikiモデルを有効化
 UserWiki: a
   .model({
     title: a.string().required(),
@@ -520,7 +520,7 @@ UserWiki: a
   .secondaryIndexes((index) => [index("username")])
   .authorization((allow) => allow.ownerDefinedIn("username")),
 
-// Action: chatのtoolsにWikiQueryツールを追加
+// STEP4 Action: chatのtoolsにWikiQueryツールを追加
 chat: a
   .conversation({
     aiModel: {
@@ -572,7 +572,7 @@ const App = () => {
 
   const [viewMode, setViewMode] = useState<ViewMode>("list");
 
-  // Action: 以下全ての関数とreturn文のコメントアウトを外してください
+  // STEP4 Action: 以下全ての関数とreturn文のコメントアウトを外してください
 ```
 
 ### 動作確認
@@ -594,7 +594,7 @@ S3バケットを有効化し、ファイルアップロード・管理機能を
 amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP5 Action: コメントアウト削除
 import { storage } from './storage/resource';
 
 const backend = defineBackend({
@@ -602,7 +602,7 @@ const backend = defineBackend({
   chatHandler,
   webSearch,
   data,
-  storage, // Action: コメントアウト削除
+  storage, // STEP5 Action: コメントアウト削除
 });
 ```
 
@@ -611,7 +611,7 @@ const backend = defineBackend({
 app/storage/page.tsx のStorage機能を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP5 Action: コメントアウト削除
 import { FileUploader } from "@aws-amplify/ui-react-storage";
 import {
   createAmplifyAuthAdapter,
@@ -668,7 +668,7 @@ const App = () => {
 amplify/data/resource.ts のData設定を有効化します。
 
 ```ts
-// Action: PublicStorageモデルを有効化
+// STEP6 Action: PublicStorageモデルを有効化
 PublicStorage: a
   .model({
     filePath: a.string().required(),
@@ -677,7 +677,7 @@ PublicStorage: a
   .identifier(["filePath"])
   .authorization((allow) => allow.authenticated()),
 
-// Action: chatのtoolsにStorageQueryツールを追加
+// STEP6 Action: chatのtoolsにStorageQueryツールを追加
 chat: a
   .conversation({
     aiModel: {
@@ -713,10 +713,10 @@ chat: a
 amplify/backend.ts のBackend設定を有効化します。
 
 ```ts
-// Action: コメントアウト削除
+// STEP6 Action: コメントアウト削除
 import { OnUploaded } from './custom/onUploaded/resource';
 
-// Action: 最後に以下のカスタムリソースを有効化
+// STEP6 Action: 最後に以下のカスタムリソースを有効化
 const onUploaded = new OnUploaded(
   backend.createStack('OnUploaded'),
   'OnUploaded',
@@ -754,10 +754,10 @@ New Chat ボタンまたは /chat でAIチャットを確認。Wikiデータを�
 amplify/data/resource.ts のData設定を修正します。
 
 ```ts
-// Action: ハードコードされたプロンプトを削除
+// STEP7 Action: ハードコードされたプロンプトを削除
 // const DETAILED_SYSTEM_PROMPT = "あなたは優秀なAIアシスタントです。";
 
-// Action: 外部ファイルからのインポートを有効化
+// STEP7 Action: 外部ファイルからのインポートを有効化
 import { DETAILED_SYSTEM_PROMPT } from './prompts';
 ```
 
