@@ -112,11 +112,11 @@ amplify/backend.ts の認証設定を有効化します。
 ※ 作業が必要なコメントの冒頭に `Action: ` を記載しております。
 
 ```ts
-// Action: コメントアウト削除
+// STEP1 Action: コメントアウト削除
 import { auth } from './auth/resource';
 
 const backend = defineBackend({
-  auth, // Action: コメントアウト削除
+  auth, // STEP1 Action: コメントアウト削除
   // data,
   // storage,
   // chatHandler,
