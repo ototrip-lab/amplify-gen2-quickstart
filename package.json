@@ -27,7 +27,6 @@
     "@aws-amplify/backend": "1.16.1",
     "@aws-amplify/backend-cli": "1.8.0",
     "@biomejs/biome": "1.9.4",
-    "@biomejs/cli-darwin-arm64": "2.1.2",
     "@types/node": "22.16.5",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
