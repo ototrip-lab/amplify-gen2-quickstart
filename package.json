@@ -27,7 +27,7 @@
     "@aws-amplify/backend": "1.16.1",
     "@aws-amplify/backend-cli": "1.8.0",
     "@biomejs/biome": "2.2.6",
-    "@types/node": "22.18.12",
+    "@types/node": "24.10.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "aws-cdk": "2.1030.0",
