@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@aws-amplify/backend-ai": "1.5.3",
-    "@aws-amplify/ui-react": "6.15.3",
+    "@aws-amplify/ui-react": "6.15.4",
     "@aws-amplify/ui-react-ai": "1.5.1",
-    "@aws-amplify/ui-react-storage": "3.17.2",
-    "@tanstack/react-query": "5.100.9",
+    "@aws-amplify/ui-react-storage": "3.17.3",
+    "@tanstack/react-query": "5.100.10",
     "aws-amplify": "6.17.0",
     "next": "16.2.6",
     "react": "19.2.6",
@@ -28,14 +28,14 @@
     "@aws-amplify/backend-cli": "1.8.2",
     "@aws-amplify/storage": "6.15.0",
     "@biomejs/biome": "2.4.15",
-    "@types/node": "24.12.3",
+    "@types/node": "24.12.4",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "aws-cdk": "2.1121.0",
-    "aws-cdk-lib": "2.253.1",
+    "aws-cdk": "2.1122.0",
+    "aws-cdk-lib": "2.254.0",
     "constructs": "10.6.0",
     "esbuild": "0.28.0",
-    "tsx": "4.21.0",
+    "tsx": "4.22.0",
     "typescript": "6.0.3"
   }
 }
